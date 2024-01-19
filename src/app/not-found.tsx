@@ -1,17 +1,15 @@
-import Link from "next/link"
+import ButtonBack from "@/components/ButtonBack";
+import Link from "next/link";
 
 const NotFound = () => {
-    return (
-        <div className="grid gap-4 place-content-center h-screen">
-            <h1 className="text-center text-2xl">404</h1>
-            <Link 
-                href="/posts" 
-                className="bg-black text-white px-4 py-2 rounded hover:bg-slate-700"
-            >
-                Voltar
-            </Link>
-        </div>
-    )
-}
+  return (
+    <div className="grid gap-4">
+      <h1 className="text-center text-2xl">404</h1>
+      <div className="text-center">
+        <ButtonBack>Voltar</ButtonBack>
+      </div>
+    </div>
+  );
+};
 
-export default NotFound
+export default NotFound;

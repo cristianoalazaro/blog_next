@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 interface Props {
   totalPages: number;
@@ -6,18 +7,9 @@ interface Props {
 }
 
 const PostPagination = ({ totalPages, currentPage = 1 }: Props) => {
-
-  const decreasePage = () => {
-    if (currentPage > 0) {
-      currentPage--;
-    }
-  };
-
-  const increasePage = () => {
-    if (currentPage > totalPages) {
-      currentPage++;
-    }
-  };
+  if (currentPage > totalPages || currentPage < 1) {
+    notFound();
+  }
 
   return (
     <div className="flex gap-4 justify-center">
@@ -35,6 +27,7 @@ const PostPagination = ({ totalPages, currentPage = 1 }: Props) => {
       {Array.from({ length: totalPages }).map((_, index) => (
         <Link
           href={`/page/${index + 1}`}
+          key={index}
           className={`border-solid border-2 border-black rounded p-1 w-10 flex justify-center 
             ${
               currentPage === index + 1
